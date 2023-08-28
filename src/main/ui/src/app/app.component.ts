@@ -21,13 +21,13 @@ export class AppComponent implements OnDestroy {
     email: new FormControl('', Validators.nullValidator && Validators.required)
   });
 
-  users: any[] = [];
+  todoItems: any[] = [];
   userCount = 0;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
   onSubmit() {
-    this.appService.addUser(this.userForm.value, this.userCount + 1).pipe(takeUntil(this.destroy$)).subscribe(data => {
+    this.appService.addTodoItem(this.userForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
       console.log('message::::', data);
       this.userCount = this.userCount + 1;
       console.log(this.userCount);
@@ -35,10 +35,10 @@ export class AppComponent implements OnDestroy {
     });
   }
 
-  getAllUsers() {
-    this.appService.getUsers().pipe(takeUntil(this.destroy$)).subscribe((users: any[]) => {
-		this.userCount = users.length;
-        this.users = users;
+  getAllTodoItems() {
+    this.appService.getTodoItems().pipe(takeUntil(this.destroy$)).subscribe((todoItems: any[]) => {
+		this.userCount = todoItems.length;
+        this.todoItems = todoItems;
     });
   }
 
@@ -48,6 +48,6 @@ export class AppComponent implements OnDestroy {
   }
 
   ngOnInit() {
-	this.getAllUsers();
+	this.getAllTodoItems();
   }
 }

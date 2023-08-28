@@ -1,13 +1,10 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS todoItems;
 
-CREATE TABLE users (
+CREATE TABLE todoItems (
   id INT PRIMARY KEY,
-  FIRST_NAME VARCHAR(250) NOT NULL,
-  LAST_NAME VARCHAR(250) NOT NULL,
-  EMAIL VARCHAR(250) NOT NULL
+  TASK   VARCHAR(250) NOT NULL,
+  COMPLETED VARCHAR(250) NOT NULL
 );
 
-INSERT INTO users (ID, FIRST_NAME, LAST_NAME, EMAIL) VALUES
-  (1, 'first', 'last 1', 'abc1@gmail.com'),
-  (2, 'first', 'last 2', 'abc2@gmail.com'),
-  (3, 'first', 'last 3', 'abc3@gmail.com');
+INSERT INTO todoItems (ID, TASK, COMPLETED) VALUES
+  (1, 'Test', true);

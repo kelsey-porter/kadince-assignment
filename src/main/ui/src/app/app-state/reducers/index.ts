@@ -76,9 +76,9 @@ export const metaReducers: MetaReducer<State>[] =
   : [logger, storeFreeze, localStorageSyncReducer];
 
 /* Transactions State start */
-export const getCreateUserState = createFeatureSelector<fromCreateUser.State>('createUser');
+export const getCreatetodoItemstate = createFeatureSelector<fromCreateUser.State>('createUser');
 
-export const getUsers = createSelector(
-  getCreateUserState,
-  fromCreateUser.getUsers
+export const getTodoItems = createSelector(
+  getCreatetodoItemstate,
+  fromCreateUser.getTodoItems
 );

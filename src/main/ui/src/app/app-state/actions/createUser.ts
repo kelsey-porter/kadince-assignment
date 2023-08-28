@@ -10,7 +10,7 @@ export const createUser = createAction(
   props<User>()
 );
 
-export const createUserSuccess = createAction(
+export const createtodoItemsuccess = createAction(
   CREATE_USER,
   props<User>()
 );

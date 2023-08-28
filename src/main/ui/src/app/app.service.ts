@@ -10,13 +10,17 @@ export class AppService {
 
   rootURL = '/api';
 
-  getUsers() {
-    return this.http.get(this.rootURL + '/users');
+  getTodoItems() {
+    return this.http.get(this.rootURL + '/todoItems');
   }
 
-  addUser(user: any, id: number) {
-	user.id = id;
-	return this.http.post(this.rootURL + '/user', user);
+  addTodoItem(todoItem: any) {
+	return this.http.post(this.rootURL + '/todoItem', todoItem);
+  }
+
+  updateTodoItem(todoItem: any) {
+    return this.http.post(this.rootURL + '/update', todoItem);
+
   }
 
 }
