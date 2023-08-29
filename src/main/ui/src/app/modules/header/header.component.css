@@ -1,0 +1,13 @@
+.header {
+    width: 100%;
+    background-color: teal;
+    height: 10%;
+
+}
+
+.title {
+    display: flex;
+    font-size: 40px;
+    color: white;
+    justify-content: center;
+}
