@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  background-color: teal;
+  height: 10%;
+
+}
+
+.title {
+  display: flex;
+  font-size: 40px;
+  color: white;
+  justify-content: center;
+}
+
+.todoItem {
+  outline: 1px solid black;
+  width: 10%;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.todoPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-item {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.completed {
+  text-decoration: line-through;
+}
