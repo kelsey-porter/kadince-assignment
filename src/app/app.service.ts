@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TodoItem} from "./model/TodoItem";
+import {Filter} from "./model/Filter";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class AppService {
     })
   }
 
+  getFilteredTodos(filter: Filter[]) {
+    return this.http.post<TodoItem[]>(this.baseUrl + '/filter', filter);
+  }
+
   getTodos() {
     return this.http.get<TodoItem[]>(this.baseUrl);
   }
@@ -25,9 +30,12 @@ export class AppService {
     return this.http.post<TodoItem>(this.baseUrl + '/todoItem', todoItem);
   }
 
-  updateTodoItem(todoItem: any) {
-    return this.http.post(this.baseUrl + '/update', todoItem);
+  delete(todoItem: any) {
+    return this.http.post<TodoItem[]>(this.baseUrl + '/delete', todoItem);
+  }
 
+  update(todoItem: any) {
+    return this.http.post(this.baseUrl + '/update', todoItem);
   }
 
 }

@@ -6,9 +6,49 @@
 <div class="todoPage">
   <div class="add-item">
     <input type="text"
-           [formControl]="addItem">
-    <button (click)="addTodoItem()">Add</button></div>
-  <div (click)="markAsCompleted(todo)" [ngClass]="todo.completed ? 'completed' : ''" class="todoItem" *ngFor="let todo of todoItems">
-  {{todo}}
+           [formControl]="addItem"
+           (keyup)="handleKeyPress($event)">
+    <button mat-button class="add-button" (click)="addTodoItem()">Add</button>
+    <button mat-button class="filter-button" (click)="toggleFilter()">Filter</button>
+  </div>
+
+  <div class="filter" *ngIf="isFilterShown">
+    <div class="select-all">
+      <mat-checkbox class="example-margin"
+                    [checked]="allComplete"
+                    [indeterminate]="someComplete()"
+                    (click)="selectAll(!allComplete)"
+      >Select All
+      </mat-checkbox>
+    </div>
+
+    <div *ngFor="let filter of filters" class="individual">
+      <mat-checkbox class="checkbox"
+                    id="{{filter.name}}"
+                    [checked]="filter.completed"
+                    (click)="updateAllComplete(filter)">
+        {{filter.name}}
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <div class="todoItem"
+       *ngFor="let todo of todoItems">
+    <div class="display">
+      <div class="value" [ngClass]="todo.completed ? 'completed' : ''">
+        <div *ngIf="!isButtonVisible(todo)" class="non-editing-field">{{todo.task}}</div>
+        <input [formControl]="editItem" class="editing-field" *ngIf="isButtonVisible(todo)">
+        <button (click)="submitEdit(todo)" [ngClass]="isButtonVisible(todo) ? 'editing-button': 'non-editing-button'" mat-button id="{{todo.task}}">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+      <div class="status">{{todo.completed ? "Complete" : "Pending"}}</div>
+    </div>
+    <div class="icons">
+      <mat-icon (click)="markAsCompleted(todo)" *ngIf="!isButtonVisible(todo)">{{todo.completed ? 'check_box' : "check_box_outline_blank"}}</mat-icon>
+      <mat-icon (click)="cancelTodo()" *ngIf="isButtonVisible(todo)">cancel</mat-icon>
+      <mat-icon (click)="editTodo(todo)" *ngIf="!isButtonVisible(todo) && !todo.completed">edit</mat-icon>
+      <mat-icon (click)="delete(todo)">delete</mat-icon>
+    </div>
   </div>
 </div>

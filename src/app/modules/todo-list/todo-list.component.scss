@@ -13,11 +13,75 @@
 }
 
 .todoItem {
-  outline: 1px solid black;
-  width: 10%;
+  display:flex;
+  width: 25%;
   text-align: center;
-  margin-top: 10px;
-  font-size: 25px;
+}
+
+.filter {
+  outline: 1px solid black;
+  width: 22vw;
+  height: 10vh;
+  padding-left: 10px;
+  font-size: 20px;
+
+  .individual {
+    font-size: 20px;
+    padding-left: 22px;
+
+  }
+}
+
+.display {
+  display: flex;
+  width: 19vw;
+  margin-right: 10px;
+
+  .value {
+    outline: 1px solid black;
+    width: 75%;
+    margin-top: 10px;
+    margin-right: 10px;
+
+
+    .non-editing-field {
+      width: 98%;
+      font-size: 25px;
+      margin: 0px;
+      padding-bottom: 0px;
+    }
+
+    .non-editing-button {
+      display: none;
+    }
+
+
+    .editing-field {
+      width: 72%;
+      font-size: 26px;
+      height: 92%;
+      margin: 0px;
+      padding-bottom: 0px;
+    }
+
+    .editing-button {
+      visibility: visible;
+      margin-top: -12px;
+    }
+  }
+
+  .status {
+    outline: 1px solid black;
+    font-size: 20px;
+    width: 25%;
+    margin-top: 10px;
+    padding-top: 5px;
+  }
+}
+
+.icons{
+  cursor:pointer;
+  padding-top: 15px;
 }
 
 .todoPage {
@@ -28,10 +92,30 @@
 }
 
 .add-item {
+  height: 4vh;
   margin-top: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
+
+  input{
+    margin-right: 10px;
+    font-size: 22px;
+    width: 18vw;
+  }
+  .add-button {
+    background-color: teal;
+    color: white;
+    margin-right:10px;
+    font-size: 15px;
+  }
+
+  .filter-button {
+    background-color: gray;
+    color: white;
+    margin-right:10px;
+    font-size: 15px;
+  }
 }
 
 .completed {
